@@ -1,38 +1,38 @@
-
 import sys
 from collections import deque
+
 input=sys.stdin.readline
 N,M,V=map(int,input().split())
 
-v=[[] for _ in range(N+1)]
-
+graph=[[] for _ in range(N+1)]
 for _ in range(M):
     a,b=map(int,input().split())
-    v[a].append(b)
-    v[b].append(a)
-for i in range(N):
-    v[i+1].sort()
-visit=[False]*(N+1)
-def DFS(V):
-    visit[V]=True
-    print(V,end=' ')
-    for x in v[V]:
-        if visit[x]!=True:
-            DFS(x)
+    graph[a].append(b)
+    graph[b].append(a)
 
-DFS(V)
-print("")
-visit=[False]*(N+1)
-def BFS(V):
-    q=deque([V])
-    visit[V]=True
+for i in range(N+1):
+    graph[i].sort()
     
-    while q:
-        k=q.popleft()
-        print(k,end=' ')
-        for i in v[k]:
-            if not visit[i]:
-                q.append(i)
-                visit[i]=True
+vis=[False]*(N+1)
+def DFS(stand):
+    vis[stand]=True
+    print(stand,end=' ')
+    for i in graph[stand]:
+        if not vis[i]:
+            DFS(i)
 
+
+visit=[False]*(N+1)
+def BFS(stand):
+    q=deque([stand])
+    visit[stand]=True
+    while q:
+        v=q.popleft()
+        print(v,end=' ')
+        for i in graph[v]:
+            if not visit[i]:
+                visit[i]=True
+                q.append(i)
+DFS(V)
+print()
 BFS(V)
