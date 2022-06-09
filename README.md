@@ -7,4 +7,3 @@
 |[DP](https://github.com/yeonx/baekjoon/tree/main/DP)|
 |[Sorting](https://github.com/yeonx/baekjoon/tree/main/Sorting)|
 |[Graph](https://github.com/yeonx/baekjoon/tree/main/Graph)|
-|[이분탐색/삼분탐색]()|
