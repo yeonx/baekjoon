@@ -2,27 +2,21 @@ import sys
 sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
 
-
-def DFS(v,c,ok):
-    print(v,c,ok)
+def DFS(v,c):
+    if c==0:
+        c=1
     for i in graph[v]:
         if color[i]==0:
             if c == 1:
                 color[i]=-1
             else:
                 color[i]=1
-            DFS(i,color[i],ok)
-        else:
-            print("-----------",v,c,i,color[i])
-            if c == color[i]:
-                ok= -1
-                DFS(i,color[i],ok)
-
-                return ok
-            else:
-                return ok
-        #DFS(v,color[i],ok)
-    return ok
+            a=DFS(i,color[i])
+            if not a:
+                return False
+        elif c == color[i]:
+            return False
+    return True
 
 k=int(input())
 
@@ -39,9 +33,12 @@ for _ in range(k):
     for i in range(1,v+1):
         graph[i].sort()
         
-    result = DFS(1,1,1)
-    
-    if result == 1:
+    for i in range(1,v+1):
+        if color[i]==0:
+            ok = DFS(i,color[i])
+            if ok is False:
+                break
+    if ok == True:
         print("YES")
     else:
         print("NO")
