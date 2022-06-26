@@ -9,4 +9,3 @@
 |[Stack](https://github.com/yeonx/baekjoon/tree/main/Stack)|
 |[Strings](https://github.com/yeonx/baekjoon/tree/main/Strings)|
 |[Graph](https://github.com/yeonx/baekjoon/tree/main/Graph)|
-|[Mathematics]()|
